@@ -1,88 +1,156 @@
-# DeepFER: Facial Emotion Recognition Using Deep Learning
+# 😊 DeepFER: Facial Emotion Recognition Using Deep Learning
 
-## Overview
+DeepFER is a Computer Vision and Deep Learning project that recognizes human facial emotions from images and live webcam input. The project leverages Convolutional Neural Networks (CNNs) and Transfer Learning techniques to classify facial expressions into seven different emotion categories.
 
-DeepFER (Deep Facial Emotion Recognition) is a deep learning-based computer vision project that automatically recognizes human emotions from facial expressions. The system classifies facial images into seven emotion categories using Convolutional Neural Networks (CNNs) and Transfer Learning techniques.
-
-Three different deep learning models were developed and evaluated:
-
-- Custom CNN (4 Convolutional Blocks)
-- VGG16 Transfer Learning
-- EfficientNetB0 Transfer Learning (Best Performing Model)
-
-After comprehensive evaluation, EfficientNetB0 achieved the best overall performance and was selected as the final model.
+The project compares multiple deep learning architectures and selects the best-performing model based on evaluation metrics. It also includes real-time emotion recognition using a webcam, making it suitable for practical AI applications.
 
 ---
 
-## Problem Statement
+# 📌 Project Overview
 
-Understanding human emotions through facial expressions plays a vital role in developing intelligent and empathetic AI systems. Manual emotion analysis is time-consuming and subjective, making automated facial emotion recognition increasingly valuable.
+Facial emotion recognition is an important computer vision task with applications in:
 
-This project aims to build an accurate and efficient facial emotion recognition system capable of identifying emotions from facial images for real-world applications.
+- Human-Computer Interaction
+- Mental Health Monitoring
+- Customer Service Analytics
+- Smart Education Systems
+- Driver Monitoring Systems
+- Healthcare Assistance
+- AI-powered Interactive Applications
 
----
-
-## Objectives
-
-- Develop an end-to-end facial emotion recognition system.
-- Build and compare multiple deep learning models.
-- Improve model performance using Transfer Learning.
-- Evaluate models using standard classification metrics.
-- Save the best-performing model for deployment.
-- Demonstrate real-time emotion prediction capability.
+This project develops a complete facial emotion recognition pipeline, starting from data preprocessing and model training to real-time deployment.
 
 ---
 
-## Dataset
+# 🎯 Objectives
 
-The dataset contains facial images belonging to seven emotion classes:
+- Build an accurate facial emotion recognition system.
+- Compare multiple deep learning architectures.
+- Apply Transfer Learning for improved performance.
+- Perform image preprocessing and augmentation.
+- Evaluate models using multiple performance metrics.
+- Save the best-performing model.
+- Deploy the model for real-time webcam emotion recognition.
 
-- Angry
-- Disgust
-- Fear
-- Happy
-- Neutral
-- Sad
-- Surprise
+---
 
-### Data Preprocessing
+# 😀 Emotion Classes
 
-The preprocessing pipeline includes:
+The model predicts the following seven facial emotions:
 
-- Image resizing
-- Pixel normalization
-- Data augmentation
-- Training, validation, and test splitting
+- Angry 😠
+- Disgust 🤢
+- Fear 😨
+- Happy 😊
+- Neutral 😐
+- Sad 😢
+- Surprise 😲
 
-Data augmentation techniques include:
+---
+
+# 🧠 Models Implemented
+
+Three different deep learning models were developed and compared.
+
+| Model | Description |
+|--------|-------------|
+| Custom CNN | Four Convolutional Blocks built from scratch |
+| VGG16 Transfer Learning | Transfer Learning using ImageNet pretrained weights |
+| EfficientNetB0 Transfer Learning | Fine-tuned EfficientNetB0 (Best Performing Model) |
+
+After comparison, **EfficientNetB0** was selected as the final deployment model.
+
+---
+
+# ⚙️ Technologies Used
+
+- Python
+- TensorFlow / Keras
+- OpenCV
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Pillow
+- Google Colab
+
+---
+
+# 📂 Project Structure
+
+```
+DeepFER/
+
+│── DeepFER_fixed.ipynb
+│── webcam_demo_colab_fixed.ipynb
+│── webcam_demo_local.py
+│── README.md
+│
+├── images/
+   ├── train/
+   ├── validation/
+   └── test/
+
+```
+
+---
+
+# 🔄 Project Workflow
+
+```
+Dataset
+      │
+      ▼
+Image Preprocessing
+      │
+      ▼
+Data Augmentation
+      │
+      ▼
+Model Training
+      │
+      ▼
+Model Evaluation
+      │
+      ▼
+Model Comparison
+      │
+      ▼
+Best Model Selection
+      │
+      ▼
+Model Saving
+      │
+      ▼
+Real-Time Emotion Recognition
+```
+
+---
+
+# 🖼 Dataset
+
+The dataset consists of facial images categorized into seven emotion classes.
+
+### Image Processing
+
+- Face Images
+- RGB Images
+- Image Size: 96 × 96
+- Data Augmentation
+- Normalization
+- Train / Validation Split
+
+Augmentation techniques include:
 
 - Rotation
-- Horizontal flipping
-- Zooming
-- Width shifting
-- Height shifting
-
-These techniques improve model generalization and reduce overfitting.
-
----
-
-## Models Implemented
-
-### 1. Custom CNN
-
-A CNN architecture built from scratch consisting of four convolutional blocks followed by pooling, dropout, and dense layers.
-
-### 2. VGG16 Transfer Learning
-
-A pre-trained VGG16 model was fine-tuned for facial emotion recognition by replacing the classification head.
-
-### 3. EfficientNetB0 Transfer Learning
-
-EfficientNetB0 was implemented using transfer learning and achieved the best overall performance. It provided superior feature extraction, better generalization, and improved classification accuracy.
+- Horizontal Flip
+- Zoom
+- Width Shift
+- Height Shift
+- Brightness Adjustment
 
 ---
 
-## Model Evaluation
+# 📈 Model Evaluation
 
 The models were evaluated using:
 
@@ -90,157 +158,220 @@ The models were evaluated using:
 - Precision
 - Recall
 - F1-Score
-- Classification Report
 - Confusion Matrix
+- Classification Report
 
-The notebook also includes:
+Model comparison was performed to identify the best-performing architecture.
 
-- Confusion Matrix Interpretation
+---
+
+# 💾 Model Saving
+
+The final EfficientNetB0 model is saved as:
+
+```
+deepfer_efficientnetb0_best.keras
+```
+
+The saved model can be loaded later for inference without retraining.
+
+---
+
+# 🎯 Prediction
+
+The project supports prediction on:
+
+- Validation Images
+- Test Images
+- Single Custom Images
+- Live Webcam
+
+---
+
+# 📷 Local Webcam Demo
+
+The repository includes a standalone webcam application for real-time emotion recognition.
+
+Run locally:
+
+```bash
+pip install tensorflow opencv-python numpy
+
+python webcam_demo_local.py
+```
+
+Requirements:
+
+- Place `deepfer_efficientnetb0_best.keras` in the same folder as the script.
+- Connect a webcam.
+- Press **Q** to quit the application.
+
+The webcam application:
+
+- Detects faces
+- Crops the detected face
+- Resizes images to **96×96**
+- Applies the same preprocessing used during training
+- Predicts one of the seven emotions
+- Displays confidence scores in real time
+
+---
+
+# ☁️ Google Colab Webcam Demo
+
+The project also includes:
+
+```
+webcam_demo_colab_fixed.ipynb
+```
+
+This notebook allows users to:
+
+- Capture an image directly from the browser camera
+- Load the trained model
+- Predict facial emotion inside Google Colab
+
+---
+
+# 🚀 Features
+
+- Facial Emotion Recognition
+- Seven Emotion Classification
+- Custom CNN
+- VGG16 Transfer Learning
+- EfficientNetB0 Transfer Learning
+- Data Augmentation
 - Model Comparison
-- Error Analysis
+- Confusion Matrix
+- Classification Report
+- Model Saving
+- Prediction on New Images
+- Local Webcam Emotion Recognition
+- Google Colab Webcam Inference
 
 ---
 
-## Best Model
+# 📊 Applications
 
-**EfficientNetB0 Transfer Learning**
-
-Reasons for selection:
-
-- Highest classification accuracy
-- Better feature extraction
-- Strong generalization capability
-- Efficient computational performance
-
-The trained model is saved and reloaded successfully for deployment readiness and sanity checking on unseen images.
+- Human Computer Interaction
+- Mental Health Monitoring
+- Customer Experience Analysis
+- Smart Learning Platforms
+- Healthcare
+- Driver Fatigue Monitoring
+- Security Systems
+- Interactive AI Applications
 
 ---
 
-## Real-Time Emotion Recognition Pipeline
+# 🔮 Future Improvements
 
-The project also demonstrates a real-time inference workflow:
-
-```
-Webcam
-    │
-    ▼
-Frame Capture
-    │
-    ▼
-Face Detection
-    │
-    ▼
-Image Preprocessing
-    │
-    ▼
-EfficientNetB0 Prediction
-    │
-    ▼
-Emotion Classification
-```
-
-This workflow can be integrated into webcam-based applications using OpenCV.
+- Train on larger datasets
+- Improve robustness under varying lighting conditions
+- Support multiple face detection
+- Deploy using Streamlit or Flask
+- TensorFlow Lite optimization
+- Mobile deployment
+- Edge AI deployment
 
 ---
 
-## Technologies Used
+# ▶️ How to Run
 
-- Python
-- TensorFlow / Keras
-- OpenCV
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Google Colab
-
----
-
-## Project Structure
-
-```
-DeepFER/
-│
-├── DeepFER.ipynb
-├── README.md
-├── images/
-```
-
----
-
-## Installation
-
-Clone the repository:
+### Clone Repository
 
 ```bash
-git clone https://github.com/Lenikaaa/DeepFER-Facial-Emotion-Recognition-Using-Deep-Learning.git
+git clone https://github.com/Lenikaaa/DeepFER-Facial-Emotion-Recognition-Using-Deep-Learning
 ```
 
-Navigate to the project folder:
+---
 
-```bash
-cd DeepFER-Facial-Emotion-Recognition-Using-Deep-Learning
-```
-
-Install the required libraries:
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the notebook using Jupyter Notebook or Google Colab.
+---
+
+### Run Notebook
+
+Open:
+
+```
+DeepFER_fixed.ipynb
+```
+
+Run all cells sequentially.
 
 ---
 
-## Results
+### Run Local Webcam
 
-- Successfully developed an end-to-end facial emotion recognition system.
-- Compared three deep learning architectures.
-- EfficientNetB0 achieved the best overall performance.
-- The final model was saved, reloaded, and validated on unseen data.
-- The project demonstrates strong potential for real-time emotion recognition applications.
+```bash
+python webcam_demo_local.py
+```
 
 ---
 
-## Future Improvements
+# 📷 Sample Output
 
-Possible enhancements include:
+The model predicts one of the following emotions:
 
-- Larger and more diverse datasets
-- Vision Transformers (ViT)
-- EfficientNetV2
-- Mobile and edge-device deployment
-- Real-time video optimization
-- Improved robustness under varying lighting conditions
+```
+😊 Happy
 
----
+😐 Neutral
 
-## Applications
+😢 Sad
 
-DeepFER can be applied in:
+😠 Angry
 
-- Human-Computer Interaction
-- Mental Health Monitoring
-- Customer Experience Analytics
-- Smart Education
-- Driver Monitoring Systems
-- Healthcare Assistance
-- Security and Surveillance
+😲 Surprise
+
+😨 Fear
+
+🤢 Disgust
+```
+
+along with the prediction confidence.
 
 ---
 
-## Author
+# 📚 Learning Outcomes
+
+This project demonstrates practical implementation of:
+
+- Computer Vision
+- Deep Learning
+- Convolutional Neural Networks
+- Transfer Learning
+- EfficientNetB0
+- VGG16
+- Image Classification
+- Model Evaluation
+- Real-Time AI Inference
+- Deep Learning Deployment
+
+---
+
+# 👩‍💻 Author
 
 **Lenika Yogi**
 
 M.Sc. Artificial Intelligence & Machine Learning
 
-GitHub:
-https://github.com/Lenikaaa
+Deep Learning | Computer Vision | Machine Learning | Data Science
 
 ---
 
-## License
+# ⭐ Acknowledgements
 
-This project is developed for educational and research purposes as part of a Deep Learning Capstone Project.
+- TensorFlow
+- Keras
+- OpenCV
+- Scikit-learn
+- Google Colab
+- ImageNet
+- EfficientNet
+- VGG16
